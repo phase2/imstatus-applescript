@@ -6,7 +6,7 @@ on alfred_script(q)
 	
 	if appIsRunning("Skype") then
 		tell application "Skype"
-			set statusCommand to "SET PROFILE MOOD_TEXT" & item 2 of q
+			set statusCommand to "SET PROFILE MOOD_TEXT" & items 2 thru -1 of q as string
 			if item 1 of q is "away" then
 				send command "SET USERSTATUS DND" script name "IMStatus"
 				send command statusCommand script name "IMStatus"
