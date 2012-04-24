@@ -20,7 +20,8 @@ on alfred_script(q)
 	if appIsRunning("Adium") then
 		tell application "Adium"
 			if item 1 of q is "away" then
-				go away with message item 2 of q
+				set AppleScript's text item delimiters to " "
+				go away with message items 2 thru -1 of q as string
 				
 				repeat with oneWindow in every chat window
 					repeat with oneChat in every chat of oneWindow
@@ -32,7 +33,8 @@ on alfred_script(q)
 					end repeat
 				end repeat
 			else if item 1 of q is "back" then
-				go available with message item 2 of q
+				set AppleScript's text item delimiters to " "
+				go available with message items 2 thru -1 of q as string
 				
 				repeat with oneWindow in every chat window
 					repeat with oneChat in every chat of oneWindow
